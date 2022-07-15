@@ -1,0 +1,51 @@
+{{#if tasks}}
+
+    <div class="table-responsive">
+            <table class="table table-sm table-bordered table-hover table-dark rounded">
+                        <thead> 
+                            <tr class="text-center">
+                                <th>N°</th>
+                                <th>Título</th>
+                                <th>Descripción</th>
+                                <th>Operaciones</th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="text-center">
+
+                            {{#each tasks}}
+
+                                <tr class="align-middle">
+                                    <td> {{@index}} </td>               
+                                    <td> {{title}} </td>                    
+                                    <td class="text-break"> {{description}} </td>
+                                    <td>
+                                        {{#if done}}
+                                            <a class="btn btn-secondary btn-sm m-1" href="/toggleDone/{{_id}}">Deshacer</a>
+                                        {{else}}
+                                            <a class="btn btn-success btn-sm m-1" href="/toggleDone/{{_id}}">Hecha</a>
+                                        {{/if}}
+                                        <a href="/edit/{{_id}}" class="m-1 btn btn-primary btn-sm">Editar</a>
+                                        <a class="btn btn-danger btn-sm m-1" href="/delete/{{_id}}">Borrar</a>
+                                    </td>
+                                </tr>
+
+                            {{/each}}
+
+                        </tbody>
+
+                    </table>
+    </div>
+
+{{else}}
+
+        <div class="h-100 d-flex align-items-center justify-content-center bg-dark border border-white rounded">
+                        <div class="text-center">
+                        <h1 class="fw-bold text-white">Sin tareas asignadas</h1>
+                        <img src="/icons/flat-files-icon-3.jpg" class="w-25" />
+                        </div>
+
+                    </div>
+
+{{/if}}
+
